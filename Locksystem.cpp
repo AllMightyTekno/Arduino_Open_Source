@@ -1,6 +1,7 @@
 #include <Keypad.h>
 #include <LiquidCrystal.h>
 
+//https://www.arduino.cc/reference/en/libraries/keypad/ FOR FURTHER DOCUMENTATION ON KEYPADS
 const int PassWordLength = 4;
 int rightnumber[PassWordLength] = {}; //In Ascii
 
@@ -76,6 +77,7 @@ else
 }
 
 }
+
 ///////>>>FUNCTIONS
 //LEDS
 void rightaction()

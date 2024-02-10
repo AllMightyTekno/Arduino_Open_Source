@@ -6,12 +6,11 @@
 const int combinationlenght = 4;
 int rightnumber[combinationlenght] = {49, 50, 51, 52};//this codes for 1,2,3,4 in ASCII. Had to use it because the library stores the input in decimal ASCII intead of a number.
 
-
 int newrightnumber[combinationlenght];
 char number[combinationlenght];
 int right = 0;
-int green = A1;
-int red = A2;
+int green = 4;
+int red = 5;
 int newcomb = 0;
 byte fulllcd[8] = {B11111, B11111, B11111, B11111, B11111, B11111, B11111, B11111,};
 int newfinalcomb = 0;
@@ -73,21 +72,32 @@ void loop() {
   }
   }
 }
-void lcdstartup(){
-  lcd.clear();
-  lcd.setCursor(0,0);
-  lcd.print("Combination :");
+//LEDS
+void rightaction(){
+      digitalWrite(green,HIGH);
+      digitalWrite(red,LOW);
 }
-void lcdenter(){
+void wrongaction(){
+      digitalWrite(red,HIGH);
+      digitalWrite(green,LOW);
+}
+
+void lcdstartup(){
+  lcd.clear(); 
+  lcd.setCursor(0,0);  //THIS PART SETS THE CURSOR ON THE FIRS COLUM FIRST ROW AND STARTS THE LCD
+  lcd.print("Combination : ");
+}
+void lcdenter(){ //ENTERS THE PASSWORD
   lcd.clear();
   lcd.print("Enter new :");
 }
-void lcdgranted(){
+void lcdgranted(){ //IF RIGHT PASSWORD HAS BEEN
  lcd.clear();
  lcd.print("*****ACESS******");
  lcd.setCursor(0,1);
  lcd.print("****GRANTED*****");
 }
+
 void rightlcd(){
  lcdgranted();
  while(newfinalcomb == 0){
@@ -111,6 +121,8 @@ void rightlcd(){
  lcd.clear();
  lcdstartup();
 }
+
+//CREATES A NEW KEY
 void enternewcode(){
  char newk = keypad.getKey();
  if(newk != 0){
@@ -132,6 +144,8 @@ void enternewcode(){
     }
  }
 }
+
+//CHECKS NEW KEY/CODE
 void checknewcode(){
   lcd.clear();
   lcd.print("Are you sure ?");
@@ -159,6 +173,7 @@ void checknewcode(){
     }
   }
 }
+//WRONG PASSWORD
 void wronglcd(){
 lcd.clear();
  lcd.print("*****ACESS******");
@@ -178,13 +193,3 @@ lcd.clear();
  lcdstartup();
  digitalWrite(red,LOW);
 }
-
-void rightaction(){
-      digitalWrite(green,HIGH);
-      digitalWrite(red,LOW);
-}
-void wrongaction(){
-      digitalWrite(red,HIGH);
-      digitalWrite(green,LOW);
-}
-

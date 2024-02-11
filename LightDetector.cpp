@@ -26,7 +26,7 @@ void loop()
     Serial.print(' IT IS NIGHT TIME AND LIGHTS ARE SWITCHED ON ')
   }
   else
-    7 // Else it's day outside and lights are turned off
+       // Else it's day outside and lights are turned off
     {
       digitalWrite(StreetLight, LOW);
       Serial.print(" IT'S DAY OUTSIDE AND LIGHTS ARE SWITCHED OFF ")
